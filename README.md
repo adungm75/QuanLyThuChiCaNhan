@@ -1,29 +1,29 @@
-# Quản Lý Chi Tiêu Cá Nhân - Personal Expense Tracker
+# Quản Lý Chi Tiêu Cá Nhân
 
 Ứng dụng quản lý tài chính và chi tiêu cá nhân thông minh dành cho người dùng muốn theo dõi thu chi, kiểm soát ngân sách hàng tháng và phân tích thói quen tiêu dùng một cách trực quan, chính xác. Dự án giải quyết triệt để bài toán mất cân đối tài chính cá nhân với các tính năng cốt lõi: ghi nhận thu/chi đa danh mục, thiết lập hạn mức ngân sách kèm cảnh báo chi tiêu vượt ngưỡng, thống kê trực quan dòng tiền theo từng tháng và lưu trữ dữ liệu ngoại tuyến bền vững. Đặc biệt, ứng dụng được thiết kế phân tầng chuẩn Clean Architecture kết hợp hệ thống xử lý ngoại lệ tập trung (Centralized Error Handling Pipeline) và phòng thử nghiệm lỗi tương tác (Error Playground).
 
 ---
 
-## 1. Công Nghệ Sử Dụng (Tech Stack)
+## 1. Công Nghệ Sử Dụng
 
 - **Framework**: Flutter (v3.x / Dart 3.x) - Xây dựng giao diện đa nền tảng hiện đại theo phong cách Material Design 3.
 - **Ngôn ngữ**: Dart (Sound Null Safety, Hướng đối tượng OOP, Mixins, Generics, Pattern Matching).
-- **Quản lý trạng thái (State Management)**: `ChangeNotifier` kết hợp `ListenableBuilder` (Native Flutter State Management, nhẹ nhàng và tối ưu hiệu năng).
-- **Kiến trúc phần mềm (Architecture)**: Clean Architecture / Layered Architecture phân tách 4 tầng độc lập (`core`, `domain`, `data`, `presentation`).
+- **Quản lý trạng thái**: `ChangeNotifier` kết hợp `ListenableBuilder` (Native Flutter State Management, nhẹ nhàng và tối ưu hiệu năng).
+- **Kiến trúc phần mềm**: Clean Architecture / Layered Architecture phân tách 4 tầng độc lập (`core`, `domain`, `data`, `presentation`).
 - **Design Patterns**:
   - **Factory Pattern**: `TransactionFactory` đóng gói khởi tạo và kiểm tra nghiệp vụ toàn vẹn dữ liệu.
   - **Generic Repository Pattern**: `Repository<T>` chuẩn hóa các thao tác CRUD trừu tượng.
   - **Mixin**: `LoggingMixin` hỗ trợ tự động ghi log phân cấp (INFO, WARNING, ERROR, DEBUG).
   - **Singleton Pattern**: Áp dụng cho `InMemoryDatabase` và `CentralizedErrorHandler`.
-- **Cơ sở dữ liệu & Lưu trữ (Storage)**: `SharedPreferences` (Lưu trữ cục bộ bền vững Offline-first dưới định dạng JSON).
-- **Thư viện hỗ trợ (Utilities)**:
+- **Cơ sở dữ liệu & Lưu trữ**: `SharedPreferences` (Lưu trữ cục bộ bền vững Offline-first dưới định dạng JSON).
+- **Thư viện hỗ trợ**:
   - `intl`: Định dạng tiền tệ Việt Nam Đồng (₫) và định dạng ngày tháng theo tiêu chuẩn Việt Nam.
   - `cupertino_icons`: Hỗ trợ hệ thống biểu tượng phong phú.
-- **Kiểm thử (Testing)**: `flutter_test` (Bộ kiểm thử tự động cho Validation, Generic Repository và Error Pipeline).
+- **Kiểm thử**: `flutter_test` (Bộ kiểm thử tự động cho Validation, Generic Repository và Error Pipeline).
 
 ---
 
-## 2. Yêu Cầu Hệ Thống (Prerequisites)
+## 2. Yêu Cầu Hệ Thống
 
 Trước khi cài đặt và chạy ứng dụng, hãy đảm bảo máy tính đã cài đặt các công cụ sau:
 
@@ -37,7 +37,7 @@ Trước khi cài đặt và chạy ứng dụng, hãy đảm bảo máy tính �
 
 ---
 
-## 3. Hướng Dẫn Cài Đặt (Installation)
+## 3. Hướng Dẫn Cài Đặt
 
 Thực hiện lần lượt các bước sau trên cửa sổ dòng lệnh (Terminal / PowerShell):
 
@@ -51,7 +51,7 @@ git clone https://github.com/adungm75/QuanLyThuChiCaNhan.git
 cd QuanLyThuChiCaNhan
 ```
 
-### Bước 3: Cài đặt các thư viện phụ thuộc (Dependencies)
+### Bước 3: Cài đặt các thư viện phụ thuộc
 ```bash
 flutter pub get
 ```
@@ -64,7 +64,7 @@ flutter doctor
 
 ---
 
-## 4. Hướng Dẫn Cấu Hình Biến Môi Trường (Configuration)
+## 4. Hướng Dẫn Cấu Hình Biến Môi Trường
 
 - **Cấu hình hiện tại**: Dự án hoạt động hoàn toàn theo cơ chế **Offline-First**, lưu trữ dữ liệu trực tiếp trong bộ nhớ cục bộ của thiết bị thông qua `SharedPreferences`. Do đó, ứng dụng **không yêu cầu** bất kỳ file `.env`, Database Server hay cấu hình Firebase (`google-services.json`) nào để chạy bản cơ bản.
 - **Cấu hình mở rộng (Dành cho việc tích hợp Backend / Cloud Sync trong tương lai)**:
@@ -81,9 +81,9 @@ flutter doctor
 
 ---
 
-## 5. Hướng Dẫn Khởi Chạy (Usage / Execution)
+## 5. Hướng Dẫn Khởi Chạy
 
-### 5.1. Chạy ở chế độ phát triển (Development Mode)
+### 5.1. Chạy ở chế độ phát triển
 Kết nối thiết bị thật qua USB hoặc khởi động máy ảo (Android Emulator / Windows / Chrome), sau đó thực thi:
 ```bash
 flutter run
@@ -99,18 +99,18 @@ flutter run -d chrome
 flutter run -d windows
 ```
 
-### 5.3. Kiểm tra phân tích tĩnh mã nguồn (Code Linter)
+### 5.3. Kiểm tra phân tích tĩnh mã nguồn
 ```bash
 flutter analyze
 ```
 
-### 5.4. Chạy bộ kiểm thử tự động (Unit Tests)
+### 5.4. Chạy bộ kiểm thử tự động
 Dự án đã tích hợp sẵn các bài test bao phủ Factory Pattern, Invariant Validation, Repository và Centralized Error Pipeline:
 ```bash
 flutter test
 ```
 
-### 5.5. Biên dịch và đóng gói ứng dụng (Production Build)
+### 5.5. Biên dịch và đóng gói ứng dụng
 ```bash
 # Đóng gói file APK phát hành cho Android
 flutter build apk --release
