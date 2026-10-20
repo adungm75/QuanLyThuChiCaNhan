@@ -46,3 +46,9 @@ app.*.map.json
 
 # Widget Preview related
 .widget_preview/
+
+
+# Environment variables (Bao mat: Tuyet doi khong commit file .env chua secret key)
+.env
+.env.*
+!.env.example

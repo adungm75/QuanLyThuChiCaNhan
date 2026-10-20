@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'core/config/env_config.dart';
 import 'core/errors/centralized_error_handler.dart';
 import 'core/errors/error_boundary.dart';
 import 'core/utils/app_theme.dart';
@@ -25,18 +26,21 @@ void main() async {
     return true;
   };
 
-  // 3. Khởi tạo cơ sở dữ liệu lưu trữ vĩnh viễn (được bọc an toàn trong try-catch)
+  // 3. Khởi tạo và nạp an toàn cấu hình biến môi trường từ .env
+  await EnvConfig.init();
+
+  // 4. Khởi tạo cơ sở dữ liệu lưu trữ vĩnh viễn (được bọc an toàn trong try-catch)
   try {
     await InMemoryDatabase.instance.init();
   } catch (e, stack) {
     debugPrint('Cảnh báo nạp bộ nhớ lưu trữ: $e\n$stack');
   }
 
-  // 4. Khởi tạo các Dependencies theo Repository Pattern
+  // 5. Khởi tạo các Dependencies theo Repository Pattern
   final expenseRepository = ExpenseRepositoryImpl();
   final budgetRepository = BudgetRepositoryImpl();
 
-  // 5. Khởi tạo Controllers
+  // 6. Khởi tạo Controllers
   final budgetController = BudgetController(budgetRepository);
   final transactionController = TransactionController(expenseRepository, budgetController);
 
@@ -59,7 +63,7 @@ class ExpenseTrackerApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Quản Lý Chi Tiêu Cá Nhân',
+      title: EnvConfig.appTitle,
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
       // Bọc ứng dụng trong ErrorBoundary để ngăn chặn crash toàn màn hình

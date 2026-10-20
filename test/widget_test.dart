@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:cd1/core/config/env_config.dart';
 import 'package:cd1/core/errors/app_exceptions.dart';
 import 'package:cd1/core/errors/centralized_error_handler.dart';
 import 'package:cd1/domain/factories/transaction_factory.dart';
@@ -129,6 +130,20 @@ void main() {
 
       expect(processed.errorCode, equals('ERR_DATABASE_READ'));
       expect(processed.isWarning, isFalse);
+    });
+  });
+
+  group('4. Environment Configuration (.env) Tests', () {
+    test('EnvConfig cung cấp giá trị mặc định an toàn khi chưa nạp file', () {
+      expect(EnvConfig.appEnv, isNotEmpty);
+      expect(EnvConfig.appTitle, equals('Quản Lý Chi Tiêu Cá Nhân'));
+      expect(EnvConfig.apiTimeoutMs, greaterThan(0));
+    });
+
+    test('EnvConfig che giấu (masking) khóa bảo mật an toàn cho log/UI', () {
+      final masked = EnvConfig.maskedSecretKey;
+      expect(masked, isNotNull);
+      expect(masked, isNot(equals('dev_secret_key_expense_tracker_2026')));
     });
   });
 }
