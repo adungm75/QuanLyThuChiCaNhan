@@ -4,7 +4,7 @@
 
 ---
 
-## 2. Công Nghệ Sử Dụng (Tech Stack)
+## 1. Công Nghệ Sử Dụng (Tech Stack)
 
 - **Framework**: Flutter (v3.x / Dart 3.x) - Xây dựng giao diện đa nền tảng hiện đại theo phong cách Material Design 3.
 - **Ngôn ngữ**: Dart (Sound Null Safety, Hướng đối tượng OOP, Mixins, Generics, Pattern Matching).
@@ -23,7 +23,7 @@
 
 ---
 
-## 3. Yêu Cầu Hệ Thống (Prerequisites)
+## 2. Yêu Cầu Hệ Thống (Prerequisites)
 
 Trước khi cài đặt và chạy ứng dụng, hãy đảm bảo máy tính đã cài đặt các công cụ sau:
 
@@ -37,7 +37,7 @@ Trước khi cài đặt và chạy ứng dụng, hãy đảm bảo máy tính �
 
 ---
 
-## 4. Hướng Dẫn Cài Đặt (Installation)
+## 3. Hướng Dẫn Cài Đặt (Installation)
 
 Thực hiện lần lượt các bước sau trên cửa sổ dòng lệnh (Terminal / PowerShell):
 
@@ -64,7 +64,7 @@ flutter doctor
 
 ---
 
-## 5. Hướng Dẫn Cấu Hình Biến Môi Trường (Configuration)
+## 4. Hướng Dẫn Cấu Hình Biến Môi Trường (Configuration)
 
 - **Cấu hình hiện tại**: Dự án hoạt động hoàn toàn theo cơ chế **Offline-First**, lưu trữ dữ liệu trực tiếp trong bộ nhớ cục bộ của thiết bị thông qua `SharedPreferences`. Do đó, ứng dụng **không yêu cầu** bất kỳ file `.env`, Database Server hay cấu hình Firebase (`google-services.json`) nào để chạy bản cơ bản.
 - **Cấu hình mở rộng (Dành cho việc tích hợp Backend / Cloud Sync trong tương lai)**:
@@ -81,16 +81,16 @@ flutter doctor
 
 ---
 
-## 6. Hướng Dẫn Khởi Chạy (Usage / Execution)
+## 5. Hướng Dẫn Khởi Chạy (Usage / Execution)
 
-### 1. Chạy ở chế độ phát triển (Development Mode)
+### 5.1. Chạy ở chế độ phát triển (Development Mode)
 Kết nối thiết bị thật qua USB hoặc khởi động máy ảo (Android Emulator / Windows / Chrome), sau đó thực thi:
 ```bash
 flutter run
 ```
 *Mẹo: Nhấn phím `r` trên Terminal để Hot Reload, hoặc `R` để Hot Restart ứng dụng trong giây lát.*
 
-### 2. Chạy trên thiết bị hoặc nền tảng cụ thể
+### 5.2. Chạy trên thiết bị hoặc nền tảng cụ thể
 ```bash
 # Chạy trên trình duyệt Google Chrome
 flutter run -d chrome
@@ -99,18 +99,18 @@ flutter run -d chrome
 flutter run -d windows
 ```
 
-### 3. Kiểm tra phân tích tĩnh mã nguồn (Code Linter)
+### 5.3. Kiểm tra phân tích tĩnh mã nguồn (Code Linter)
 ```bash
 flutter analyze
 ```
 
-### 4. Chạy bộ kiểm thử tự động (Unit Tests)
+### 5.4. Chạy bộ kiểm thử tự động (Unit Tests)
 Dự án đã tích hợp sẵn các bài test bao phủ Factory Pattern, Invariant Validation, Repository và Centralized Error Pipeline:
 ```bash
 flutter test
 ```
 
-### 5. Biên dịch và đóng gói ứng dụng (Production Build)
+### 5.5. Biên dịch và đóng gói ứng dụng (Production Build)
 ```bash
 # Đóng gói file APK phát hành cho Android
 flutter build apk --release
