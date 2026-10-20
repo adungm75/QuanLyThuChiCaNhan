@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="cd1"
+        android:label="Quản lý chi tiêu"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
